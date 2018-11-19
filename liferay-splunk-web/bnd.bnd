@@ -1,0 +1,4 @@
+Bundle-Name: liferay-splunk-web
+Bundle-SymbolicName: com.ajizan.liferay.splunk.web
+Bundle-Version: 1.0.0
+Export-Package: com.ajizan.liferay.splunk.web.constants

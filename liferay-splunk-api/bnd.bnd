@@ -1,0 +1,7 @@
+Bundle-Name: splunk-api
+Bundle-SymbolicName: com.ajizan.liferay.splunk.api
+Bundle-Version: 1.0.0
+Export-Package: \
+	com.ajizan.liferay.splunk.service
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../liferay-splunk-service/service.xml
