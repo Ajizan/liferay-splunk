@@ -28,7 +28,7 @@ public class SplunkMessagingConfigurator {
 		_bundleContext = bundleContext;
 
 		DestinationConfiguration destinationConfiguration = new DestinationConfiguration(
-				DestinationConfiguration.DESTINATION_TYPE_SERIAL, MessagingConfigConstants.DESTINATION_NAME);
+				DestinationConfiguration.DESTINATION_TYPE_PARALLEL, MessagingConfigConstants.DESTINATION_NAME);
 		
 	
 
