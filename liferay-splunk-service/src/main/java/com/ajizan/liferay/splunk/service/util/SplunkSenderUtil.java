@@ -48,12 +48,13 @@ private static final Log _log = LogFactoryUtil.getLog(SplunkSenderUtil.class);
 			int responseCode = connection.getResponseCode();
 			if (responseCode == 200) {
 				
-				_log.info("event logged to Splunk , status = " + responseCode);
+				_log.debug("event logged to Splunk , status = " + responseCode);
 			} else {
 				
-				_log.info("Unable to log event  to Splunk , status = " + responseCode );
+				_log.debug("Unable to log event  to Splunk , status = " + responseCode );
 			}
 		}
+		
 		
 		
 		

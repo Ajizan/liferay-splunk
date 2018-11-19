@@ -19,46 +19,36 @@ import com.ajizan.liferay.splunk.config.SplunkFormWebConfiguration;
 import com.ajizan.liferay.splunk.messaging.config.MessagingConfigConstants;
 import com.ajizan.liferay.splunk.service.util.SplunkSenderUtil;
 
-
-@Component(
-		immediate = true,
-		configurationPid = "com.ajizan.liferay.splunk.config.SplunkFormWebConfiguration",
-		property = {
+@Component(immediate = true, configurationPid = "com.ajizan.liferay.splunk.config.SplunkFormWebConfiguration", property = {
 		"destination.name=" + MessagingConfigConstants.DESTINATION_NAME }, service = MessageListener.class)
 
+public class SplunkMessageListener extends BaseMessageListener {
 
-public class SplunkMessageListener  extends BaseMessageListener {
+	public static final Log _log = LogFactoryUtil.getLog(SplunkMessageListener.class);
 
-	
-	public static  final Log _log = LogFactoryUtil.getLog(SplunkMessageListener.class);
 	@Override
 	protected void doReceive(Message message) throws Exception {
-		
-		if(_log.isDebugEnabled()){
-			_log.info("message receved " + message );
-			String payload = (String)message.getPayload();
-		 _log.info("Message payload: " + payload);
+
+		if (_log.isDebugEnabled()) {
+			_log.debug("message receved " + message);
 		}
-		
+
 		String event = message.getString(SplunkConstants.EVENT);
-		if(Validator.isNotNull(event)) {
-			 SplunkSenderUtil.logEvent(event , _splunkFormWebConfiguration.uri() ,  _splunkFormWebConfiguration.token() );
-			
+		if (Validator.isNotNull(event)) {
+			SplunkSenderUtil.logEvent(event, _splunkFormWebConfiguration.uri(), _splunkFormWebConfiguration.token());
+
 		}
 	}
-	
-	
+
 	@Activate
 	@Modified
 	protected void activate(Map<String, Object> properties) {
-		_splunkFormWebConfiguration = ConfigurableUtil.createConfigurable(
-	    		SplunkFormWebConfiguration.class, properties);
+		_splunkFormWebConfiguration = ConfigurableUtil.createConfigurable(SplunkFormWebConfiguration.class, properties);
 	}
 
 	private volatile SplunkFormWebConfiguration _splunkFormWebConfiguration;
-	
-	
+
 	@Reference
-    private volatile MessageBus _messageBus;
+	private volatile MessageBus _messageBus;
 
 }
