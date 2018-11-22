@@ -4,10 +4,7 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
 
 import aQute.bnd.annotation.metatype.Meta;
 
-@ExtendedObjectClassDefinition(
-		category = "platform",
-        scope = ExtendedObjectClassDefinition.Scope.GROUP
-)
+@ExtendedObjectClassDefinition(category = "audit")
 @Meta.OCD(id = "com.ajizan.liferay.splunk.config.SplunkFormWebConfiguration", localization = "content/Language", name = "splunk-form-web-configuration-name")
 
 public interface SplunkFormWebConfiguration {
@@ -17,5 +14,8 @@ public interface SplunkFormWebConfiguration {
 
 	@Meta.AD(deflt = " ", description = "splunk token", name = "splunToken", required = true)
 	public String token();
+
+	@Meta.AD(deflt = "false", required = false, description = "splunk-audit-message-processor-enabled-desc", name = "splunk-audit-message-processor-enabled")
+	public boolean enabled();
 
 }

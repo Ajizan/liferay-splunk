@@ -6,6 +6,9 @@ dependencies {
 	compileOnly group: "org.osgi", name:"org.osgi.core"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype", version: "2.0.13"
 	compileInclude group : "com.splunk" , name :"splunk" , version : "1.6.4.0"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.security.audit.api"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.security.audit.event.generators.api"
+	
 }
 
 buildService {

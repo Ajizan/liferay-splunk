@@ -20,4 +20,6 @@ Import-Package: \
 	com.liferay.portal.configuration.metatype.bnd.util,\
 	javax.net.ssl ,\
 	javax.xml.parsers ,\
-	org.xml.sax
+	org.xml.sax ,\
+	com.liferay.portal.security.audit ,\
+	com.liferay.portal.kernel.audit
