@@ -12,6 +12,24 @@
         invoke Splunk Audit Plugin programmatically  as explained in next lignes .
             
 ## Installation 
-* download the plugin from Marcketplace  
 
+> *  download the plugin from Marcketplace  and intall it , [guide to install app from marketplace](https://dev.liferay.com/discover/portal/-/knowledge_base/7-1/using-the-liferay-marketplace )
 
+> * or clone this repository and place it to your liferay workspace/modules 
+> import it with with your IDE then build & deploy to your liferay instance 
+
+## Configuration 
+
+> **step 1 : Create Splunk Token**
+>  go to your splunk server => settings  => data input stats => http Event Collector  and add new Token 
+
+> **step2 : Configure Splunk in your liferay instance**
+> got to your liferay Portal Control Panel => Configuration => System Settings => Platform => third Party 
+add le Splunk URL with the the following format protocole://splunkServer:port/services/Collector ,
+add the token that you already created and if your on a Liferay DXP instance check the check Box (Enable Splunk Audit) to make your portal forword Audit Message to your Splunk Server automaticly 
+
+![image](https://image.ibb.co/nzG64q/splunk-Config.png)
+
+for more information about HEC (HTTP Event Collector)  check the documentation below 
+ [go splunk documentation](https://docs.splunk.com/Documentation/Splunk/7.2.1/Data/HECExamples )
+ 
