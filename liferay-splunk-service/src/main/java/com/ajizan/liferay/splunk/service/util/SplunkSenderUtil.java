@@ -23,21 +23,22 @@ public class SplunkSenderUtil {
 
 	}
 
-	private static JSONObject getEventJson(String event) {
+	private static JSONObject getEventJson(String event , long time ) {
 		JSONObject eventJson = JSONFactoryUtil.createJSONObject();
 		eventJson.put("event", event);
+		eventJson.put("time", time);
 		return eventJson;
 
 	}
 
-	public static void logEvent(String event, String uri, String token) throws IOException {
+	public static void send(String event, long time ,  String uri, String token) throws IOException {
 
 		HttpURLConnection connection = getConnection(uri, token);
 		int responseCode = 0;
 		connection.setDoOutput(true);
 		try {
 			DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
-			outputStream.write(getEventJson(event).toString().getBytes("UTF8"));
+			outputStream.write(getEventJson(event , time ).toString().getBytes("UTF8"));
 			responseCode = connection.getResponseCode();
 		} catch (Exception e) {
 			_log.debug(e);

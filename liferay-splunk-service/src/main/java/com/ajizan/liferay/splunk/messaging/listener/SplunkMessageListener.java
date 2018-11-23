@@ -34,9 +34,20 @@ public class SplunkMessageListener extends BaseMessageListener {
 		}
 
 		String event = message.getString(SplunkConstants.EVENT);
-		if (Validator.isNotNull(event)) {
-			SplunkSenderUtil.logEvent(event, _splunkFormWebConfiguration.uri(), _splunkFormWebConfiguration.token());
-
+		long time = message.getLong(SplunkConstants.TIME);
+		boolean messageAuditStatus = message.getBoolean(SplunkConstants.MESSAGE_AUDIT);
+		
+		if(Validator.isNotNull(messageAuditStatus) && messageAuditStatus == true ) {
+			 if(_splunkFormWebConfiguration.enabled()==false) {
+				 if(_log.isDebugEnabled()) {
+					 _log.debug("Splunk Audit is desabled");
+				 }
+				 return ;
+			 }
+		}
+		
+		if (Validator.isNotNull(event) && Validator.isNotNull(time)) {
+			SplunkSenderUtil.send(event,time , _splunkFormWebConfiguration.uri(), _splunkFormWebConfiguration.token());
 		}
 	}
 
