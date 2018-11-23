@@ -9,10 +9,10 @@ import aQute.bnd.annotation.metatype.Meta;
 
 public interface SplunkFormWebConfiguration {
 
-	@Meta.AD(deflt = " ", description = "splunk host 'protocole://host:port/endpoint'", name = "splunkUrl", required = true)
+	@Meta.AD(deflt = " ", description = "url-desc", name = "splunk-url", required = true)
 	public String uri();
 
-	@Meta.AD(deflt = " ", description = "splunk token", name = "splunToken", required = true)
+	@Meta.AD(deflt = " ", description = "splunk-token", name = "splunk-token", required = true)
 	public String token();
 
 	@Meta.AD(deflt = "false", required = false, description = "splunk-audit-message-processor-enabled-desc", name = "splunk-audit-message-processor-enabled")

@@ -1,5 +1,6 @@
 package com.ajizan.liferay.splunk.audit;
 
+
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Activate;
@@ -12,7 +13,6 @@ import com.ajizan.liferay.splunk.messaging.config.MessagingConfigConstants;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.audit.AuditException;
 import com.liferay.portal.kernel.audit.AuditMessage;
-import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.messaging.Message;
@@ -37,17 +37,25 @@ public class SplunkAuditMessageProcessor implements AuditMessageProcessor {
 
 	private void doProcess(AuditMessage auditMessage) {
 		if (_splunkFormWebConfiguration.enabled())
+		{
+			
+			
 			if (_log.isDebugEnabled()) {
 				_log.debug(auditMessage.toJSONObject());
-				this.sendEvent(auditMessage.toJSONObject());
+				this.sendEvent(auditMessage);
 			}
+		}
+			
 	}
 
-	private void sendEvent(JSONObject event) {
+	private void sendEvent(AuditMessage auditMessage) {
+		long  ts= auditMessage.getTimestamp().getTime()/1000;  
+		_log.info("time"+ts);
 		Message message = new Message();
 		message.setDestinationName(MessagingConfigConstants.DESTINATION_NAME);
 		message.setResponseDestinationName(MessagingConfigConstants.BUS_RESPONSE);
-		message.put("event", event);
+		message.put("event", auditMessage.toJSONObject());
+		message.put("time", ts);
 		_messageBus.sendMessage(message.getDestinationName(), message);
 	}
 
