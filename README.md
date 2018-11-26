@@ -1,6 +1,6 @@
 #  Liferay 7.1 Splunk Audit Plugin 
 ## abstract 
->Splunk Audit Plugin is a liferay 7.1  plugin provide an easy way  to link your **Liferay portal** to your **Splunk Server** in order to send audit messages for a future deep processing .
+>Splunk Audit Plugin is a liferay 7.1  plugin that  provide an easy way  to link your **Liferay portal** to your **Splunk Server** in order to send audit messages for a future deep processing .
 
 
 ## Getting Started
