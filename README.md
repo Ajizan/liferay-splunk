@@ -24,12 +24,28 @@
 >  go to your splunk server => settings  => data input stats => http Event Collector  and add new Token 
 
 > **step2 : Configure Splunk in your liferay instance**
-> got to your liferay Portal Control Panel => Configuration => System Settings => Platform => third Party 
+> go to your liferay Portal Control Panel => Configuration => System Settings => Platform => third Party 
 add le Splunk URL with the the following format protocole://splunkServer:port/services/Collector ,
-add the token that you already created and if your on a Liferay DXP instance check the check Box (Enable Splunk Audit) to make your portal forword Audit Message to your Splunk Server automaticly 
+add the token that you already created ,  if your on a Liferay DXP instance check (Enable Splunk Audit) to make your portal forword Audit Message to your Splunk Server automaticly ,  otherwise (CE cas )  you have to do it programmatically which will be covered in the end of this article.
 
-![image](https://image.ibb.co/nzG64q/splunk-Config.png)
 
-for more information about HEC (HTTP Event Collector)  check the documentation below 
+
+![image](https://image.ibb.co/nzG64q/splunk-Config.png) 
+
+>for more information about HEC (HTTP Event Collector)  check the documentation below 
  [go splunk documentation](https://docs.splunk.com/Documentation/Splunk/7.2.1/Data/HECExamples )
- 
+
+> ***how to use Splunk Audit Plugin on Liferay 7.1 coumunity edition***
+all you have to do is to send a com.liferay.portal.kernel.messaging.Message instance with the properties "event" and "time" to the Splunk Audit Plugin Message Bus with destination name "splunkDestination"
+
+> exemple : 
+```
+      	public void  sentEvent(String event) {
+		 Message message = new Message();
+		 message.setDestinationName(LiferaySplunkWebPortletKeys.DESTINATION_NAME);
+		 message.put("event", event);
+		 long  ts= new Date().getTime()/1000;  
+		 message.put("time", ts);
+		 _messageBus.sendMessage(message.getDestinationName(), message);
+	}
+```

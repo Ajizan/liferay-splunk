@@ -8,6 +8,8 @@ import com.liferay.portal.kernel.messaging.MessageBus;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
 
+import java.util.Date;
+
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
@@ -37,10 +39,13 @@ public class LiferaySplunkWebPortlet extends MVCPortlet {
 	
 	
 	private void  sentEvent(String event) {
+		
 		 Message message = new Message();
 		 message.setDestinationName(LiferaySplunkWebPortletKeys.DESTINATION_NAME);
 		 message.setResponseDestinationName(LiferaySplunkWebPortletKeys.BUS_RESPONSE);
 		 message.put("event", event);
+		 long  ts= new Date().getTime()/1000;  
+		 message.put("time", ts);
 		 _messageBus.sendMessage(message.getDestinationName(), message);
 	}
 	
