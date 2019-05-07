@@ -1,9 +1,8 @@
 .gradle/
 build/
 target/
+**/bin/
 .project
 .settings/
-**/bin/
-**/.classpath
 .gitignore.swp
-
+.classpath
