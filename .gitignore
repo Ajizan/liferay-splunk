@@ -3,3 +3,7 @@ build/
 target/
 .project
 .settings/
+**/bin/
+**/.classpath
+.gitignore.swp
+
