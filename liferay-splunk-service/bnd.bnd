@@ -1,25 +1,3 @@
 Bundle-Name: splunk-service
 Bundle-SymbolicName: com.ajizan.liferay.splunk.service
 Bundle-Version: 1.0.0
-Liferay-Require-SchemaVersion: 1.0.0
-Liferay-Service: true
--metatype: *
-Import-Package: \
-	com.liferay.portal.kernel.model,\
-	com.liferay.portal.kernel.util,\
-	org.osgi.framework,\
-	com.liferay.portal.kernel.messaging,\
-	com.liferay.portal.kernel.log,\
-	com.liferay.counter.kernel.service,\
-	com.liferay.portal.kernel.service,\
-	com.liferay.portal.kernel.service.persistence,\
-	com.ajizan.liferay.splunk.service,\
-	com.liferay.portal.kernel.module.framework.service,\
-	com.liferay.portal.kernel.exception,\
-	com.liferay.portal.kernel.json,\
-	com.liferay.portal.configuration.metatype.bnd.util,\
-	javax.net.ssl ,\
-	javax.xml.parsers ,\
-	org.xml.sax ,\
-	com.liferay.portal.security.audit ,\
-	com.liferay.portal.kernel.audit

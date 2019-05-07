@@ -1,12 +1,11 @@
 dependencies {
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
-	compileOnly group: "com.liferay.portal", name: "com.liferay.util.taglib"
-	compileOnly group: "javax.portlet", name: "portlet-api"
-	compileOnly group: "javax.servlet", name: "javax.servlet-api"
-	compileOnly group: "jstl", name: "jstl"
 	compileOnly group: "org.osgi", name: "osgi.cmpn"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib"
+	
 	compileOnly group: "com.liferay", name: "com.liferay.portal.security.audit.api"
-	compileOnly group: "com.liferay", name: "com.liferay.portal.security.audit.event.generators.api"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype", version: "2.0.13"
+	compileOnly project(":modules:liferay-splunk:liferay-splunk-api")
 	
 }

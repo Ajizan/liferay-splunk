@@ -1,4 +1,3 @@
 Bundle-Name: liferay-splunk-audit
 Bundle-SymbolicName: com.ajizan.liferay.splunk.audit
 Bundle-Version: 1.0.0
-Export-Package: com.ajizan.liferay.splunk.audit.constants
