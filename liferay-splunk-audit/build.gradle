@@ -2,7 +2,7 @@ dependencies {
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "org.osgi", name: "osgi.cmpn"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
-	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib"
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.1.0"
 	
 	compileOnly group: "com.liferay", name: "com.liferay.portal.security.audit.api"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype", version: "2.0.13"
